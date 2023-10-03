@@ -16,10 +16,22 @@
       <a href="/" class="text-xl font-semibold">Market</a>
 
       <div class="space-x-6">
-        <a href="#" class="text-lg font-semibold hover:text-gray-500 transition-color duration-100"
+        <a href="{% url 'item:new' %}" class="text-lg font-semibold hover:text-gray-500 transition-color duration-100"
           >New item</a
         >
         <a href="#" class="text-lg font-semibold hover:text-gray-500 transition-color duration-100">Browse</a>
+        {% if request.user.is_authenticated %}
+        <a
+        href="#"
+          class="py-3 px-6 text-lg font-semibold bg-emerald-300 text-white rounded-xl hover:bg-emerald-600 transition-color duration-200"
+          >Inbox</a
+        >
+        <a
+          href="#"
+          class="py-3 px-6 text-lg font-semibold bg-gray-300 text-white rounded-xl hover:bg-gray-600 transition-color duration-200"
+          >Dashboard</a
+        >
+        {% else %}
         <a
         href="{% url 'core:signup' %}"
           class="py-3 px-6 text-lg font-semibold bg-emerald-300 text-white rounded-xl hover:bg-emerald-600 transition-color duration-200"
@@ -30,6 +42,8 @@
           class="py-3 px-6 text-lg font-semibold bg-gray-300 text-white rounded-xl hover:bg-gray-600 transition-color duration-200"
           >LogIn</a
         >
+        {% endif %}
+        
       </div>
     </nav>
     <div class="px-6 py-6">{% block content %}{% endblock %}</div>
