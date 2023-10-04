@@ -17,6 +17,14 @@
       </p>
       {% endif %}
 
+      {% if request.user == item.created_by %}
+      <div class="mt-6 p-6 bg-white rounded-xl">
+        <p>This is your item!</p>
+        <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-emerald-300 text-white rounded-xl hover:bg-emerald-600 transition-color duration-150">Edit</a>
+        <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-rose-500 text-white rounded-xl hover:bg-rose-700 transition-color duration-150">Delete</a>
+      </div>
+      {% endif %}
+
       <a href="#" class="inline-block mt-6 px-6 py-3 text-lg rounded-xl font-semibold bg-emerald-300 text-white hover:bg-emerald-600 transition-color duration-150">
         Contact seller
       </a>
