@@ -10,8 +10,27 @@
         value="{{ query }}"
         placeholder="Find a bike, cloth or toy..."
       />
-      <button class="mt-2 py-4 px-8 text-lg bg-emerald-300 text-white rounded-xl hover:bg-emerald-600 transition-color duration-150">Search</button>
+      <button
+        class="mt-2 py-4 px-8 text-lg bg-emerald-300 text-white rounded-xl hover:bg-emerald-600 transition-color duration-150"
+      >
+        Search
+      </button>
     </form>
+
+    <hr class="my-6" />
+
+    <p class="font-semibold">Categories</p>
+
+    <ul>
+      {% for category in categories %}
+      <li class="p-2 rounded-xl {% if category.id == category_id %}bg-gray-200{% endif %}">
+        <a
+          href="{% url 'item:items' %}?query={{ query }}&category={{category.id}}"
+          >{{category.name}}</a
+        >
+      </li>
+      {% endfor %}
+    </ul>
   </div>
   <div class="col-span-3 p-4">
     <div class="grid grid-cols-4 gap-8">
